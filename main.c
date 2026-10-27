@@ -10,9 +10,8 @@ typedef struct {
 
 size_t string_length(const char *text) {
     size_t cnt = 0;
-    char c = ' ';
 
-    while (c = text[cnt], c != '\0') {
+    while (text[cnt] != '\0') {
         cnt++;
     }
 
@@ -37,9 +36,7 @@ String string_new(const char *text) {
 }
 
 int string_is_empty(String s) {
-    size_t length = string_length(s.data);
-
-    if (s.length == 0 && s.capacity == 1) {
+    if (s.length == 0) {
         return 1;
     }
 
