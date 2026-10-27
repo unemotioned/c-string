@@ -20,7 +20,7 @@ size_t string_length(const char *text) {
 }
 
 String string_new(const char *text) {
-    String s = {};
+    String s;
 
     s.length = string_length(text);
     s.capacity = s.length + 1;
@@ -36,12 +36,28 @@ String string_new(const char *text) {
     return s;
 }
 
+int string_is_empty(String s) {
+    size_t length = string_length(s.data);
+
+    if (s.length == 0 && s.capacity == 1) {
+        return 1;
+    }
+
+    return 0;
+}
+
 int main(void) {
     String s = string_new("");
 
     printf("data: %s\n", s.data);
     printf("length: %zu\n", s.length);
     printf("capacity: %zu\n", s.capacity);
+
+    if (string_is_empty(s)) {
+        printf("s is empty\n");
+    } else {
+        printf("s is not empty\n");
+    }
 
     putchar('\n');
 
@@ -50,6 +66,12 @@ int main(void) {
     printf("data: %s\n", foo.data);
     printf("length: %zu\n", foo.length);
     printf("capacity: %zu\n", foo.capacity);
+
+    if (string_is_empty(foo)) {
+        printf("foo is empty\n");
+    } else {
+        printf("foo is not empty\n");
+    }
 
     return 0;
 }

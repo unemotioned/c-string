@@ -29,7 +29,7 @@ Implementing String in C.
 - [ ] `str_compare(str1, str2)`
   - Return true if two strings contain the same characters.
 
-- [ ] `str_is_empty(str)`
+- [x] `string_is_empty(str)`
   - Return true if the string is empty.
 
 - [ ] `str_char_at(str, index)`
@@ -45,7 +45,8 @@ Implementing String in C.
   - Return true if the string ends with the given suffix.
 
 - [ ] `str_index_of(str, ch)`
-  - Return the index of the first occurrence of the given character, or -1 if not found.
+  - Return the index of the first occurrence of the given character, or -1 if
+    not found.
 
 - [ ] `str_count(str, ch)`
   - Count how many times the given character appears in the string.
@@ -60,7 +61,8 @@ Implementing String in C.
   - Return a new string with leading and trailing whitespace removed.
 
 - [ ] `str_substring(str, start, end)`
-  - Return a new string containing characters from the start index up to, but not including, the end index.
+  - Return a new string containing characters from the start index up to, but
+    not including, the end index.
 
 - [ ] `str_replace(str, index, ch)`
   - Replace the character at the given index with the specified character.
@@ -72,4 +74,5 @@ Implementing String in C.
   - Remove the character at the given index.
 
 - [ ] `str_split(str, index, left, right)`
-  - Split the string at the given index into two strings, store it in `left` and `right`.
+  - Split the string at the given index into two strings, store it in `left` and
+    `right`.
