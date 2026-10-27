@@ -14,9 +14,10 @@ Implementing String in C.
 
 ## TODO
 
-- [ ] Create Struct for String
+- [x] Create Struct for String `string_new(str)`
+  - store text, length and capacity(including nul char)
 
-- [ ] `str_length(str)`
+- [x] `string_length(str)`
   - Get the length of a string, excluding the null terminator.
 
 - [ ] `str_copy(str)`
