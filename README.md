@@ -18,6 +18,8 @@ Implementing String in C.
   - store text, length and capacity(including nul char)
 
 - [x] `string_length(str)`
+- [x] `string_free(String *) -> void`
+  - Free the String struct's pointer and initialize with compound literal
   - Get the length of a string, excluding the null terminator.
 
 - [ ] `str_copy(str)`

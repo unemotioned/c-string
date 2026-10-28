@@ -35,6 +35,12 @@ String string_new(const char *text) {
     return s;
 }
 
+void string_free(String *s) {
+    // free s.data which is char *
+    free(s->data);    // access struct's member via pointer
+    *s = (String){0}; // initialize all values with 0s
+}
+
 int string_is_empty(String s) {
     if (s.length == 0) {
         return 1;
@@ -69,6 +75,9 @@ int main(void) {
     } else {
         printf("foo is not empty\n");
     }
+
+    string_free(&foo);
+    string_free(&s);
 
     return 0;
 }
