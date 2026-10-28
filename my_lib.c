@@ -5,7 +5,7 @@
 typedef struct {
     char *data;
     size_t length;
-    size_t capacity; // including NUL char
+    size_t capacity; // including terminator
 } String;
 
 size_t string_length(const char *text) {
@@ -50,7 +50,7 @@ int string_is_empty(String s) {
 }
 
 /**
- * Return `-1` if index is out of range or character is not found.
+ * Return `-1` if index is out of range.
  */
 int string_char_at(String s, int index) {
     if (index < 0 || (size_t)index >= s.length) {
