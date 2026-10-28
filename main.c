@@ -19,6 +19,18 @@ void test_empty(String s, String foo) {
     }
 }
 
+void test_string_concat(void) {
+    String foo = string_new("foo");
+    String bar = string_new("bar");
+
+    printf("%s", string_concat(foo, bar).data);
+    putchar(']');
+    putchar('\n');
+
+    string_free(&bar);
+    string_free(&foo);
+}
+
 void test_char_at(String foo) {
     printf("\n===== Test Char At =====\n");
 
@@ -158,6 +170,7 @@ int main(void) {
     String s = string_new("");
     String foo = string_new("Foobar");
 
+    test_string_concat();
     // test_empty(s, foo);
     // test_char_at(foo);
     // test_char_index(foo);
@@ -168,7 +181,7 @@ int main(void) {
     // test_ends_with();
     // test_string_replace();
     // test_string_insert();
-    test_string_remove();
+    // test_string_remove();
 
     string_free(&foo);
     string_free(&s);

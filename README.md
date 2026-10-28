@@ -27,7 +27,7 @@ Implementing String in C.
 - [ ] `string_copy(String) -> String`
   - Create and return a new copy of a string.
 
-- [ ] `string_concat(String, String) -> String`
+- [x] `string_concat(String, String) -> String`
   - Combine two strings into a new string.
 
 - [x] `string_compare(String, String) -> int`

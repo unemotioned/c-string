@@ -49,6 +49,24 @@ int string_is_empty(String s) {
     return 0;
 }
 
+String string_concat(String a, String b) {
+    char *new_p = malloc(a.length + b.length);
+    if (new_p == NULL) {
+        printf("Failed to malloc string_concat\n");
+        exit(1);
+    }
+
+    for (size_t i = 0; i < a.length; i++) {
+        new_p[i] = a.data[i];
+    }
+    for (size_t i = 0; i < b.length; i++) {
+        new_p[i + a.length] = b.data[i];
+    }
+    new_p[a.length + b.length + 1] = '\0';
+
+    return string_new(new_p);
+}
+
 /**
  * Return `-1` if index is out of range.
  */
