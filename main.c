@@ -49,6 +49,42 @@ int string_is_empty(String s) {
     return 0;
 }
 
+/**
+ * Return `-1` if index is out of range or character is not found.
+ */
+int string_char_at(String s, int index) {
+    if (index < 0 || (size_t)index >= s.length) {
+        return -1;
+    }
+
+    return s.data[index];
+}
+
+/**
+ * Compare return value with `SIZE_MAX` from `stdint.h` to check if index of
+ * character was found.
+ */
+size_t string_char_index(String s, const char c) {
+    size_t index = SIZE_MAX;
+    for (size_t i = 0; i < s.length; i++) {
+        if (s.data[i] == c) {
+            index = i;
+            break;
+        }
+    }
+    return index;
+}
+
+size_t string_count(String s, const char c) {
+    size_t cnt = 0;
+    for (size_t i = 0; i < s.length; i++) {
+        if (s.data[i] == c) {
+            cnt++;
+        }
+    }
+    return cnt;
+}
+
 int main(void) {
     String s = string_new("");
 
@@ -75,6 +111,10 @@ int main(void) {
     } else {
         printf("foo is not empty\n");
     }
+
+    int index = 10;
+    int char_at = string_char_at(foo, index);
+    printf("char at %d: %c", index, char_at);
 
     string_free(&foo);
     string_free(&s);

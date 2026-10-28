@@ -14,67 +14,73 @@ Implementing String in C.
 
 ## TODO
 
-- [x] Create Struct for String `string_new(str)`
-  - store text, length and capacity(including nul char)
+- [x] `string_new(char *) -> String`
+  - Create Struct for String that store text, length and capacity(including
+    terminator)
 
-- [x] `string_length(str)`
 - [x] `string_free(String *) -> void`
   - Free the String struct's pointer and initialize with compound literal
+
+- [x] `string_length(char *) -> size_t`
   - Get the length of a string, excluding the null terminator.
 
-- [ ] `str_copy(str)`
+- [ ] `string_copy(String) -> String`
   - Create and return a new copy of a string.
 
-- [ ] `str_concat(str1, str2)`
+- [ ] `string_concat(String, String) -> String`
   - Combine two strings into a new string.
 
-- [ ] `str_compare(str1, str2)`
+- [ ] `string_compare(String, String) -> int`
   - Return true if two strings contain the same characters.
 
-- [x] `string_is_empty(str)`
+- [ ] `string_compare_ignore_case(String, String) -> int`
+  - Return true if two strings contain the same characters regardless of upper
+    or lower case.
+
+- [x] `string_is_empty(String) -> int`
   - Return true if the string is empty.
 
-- [ ] `str_char_at(str, index)`
+- [x] `string_char_at(String, int) -> int`
   - Return the character at the given index.
 
-- [ ] `str_contains(str, ch)`
+- [ ] `string_contains(String, char)`
   - Return true if the string contains the given character.
 
-- [ ] `str_starts_with(str, prefix)`
+- [ ] `string_starts_with(String, String) -> int`
   - Return true if the string starts with the given prefix.
 
-- [ ] `str_ends_with(str, suffix)`
+- [ ] `string_ends_with(String, String) -> int`
   - Return true if the string ends with the given suffix.
 
-- [ ] `str_index_of(str, ch)`
+- [x] `string_char_index(String, char) -> int`
   - Return the index of the first occurrence of the given character, or -1 if
     not found.
 
-- [ ] `str_count(str, ch)`
+- [x] `string_count(String, char) -> int`
   - Count how many times the given character appears in the string.
 
-- [ ] `str_to_upper_case(str)`
+- [ ] `string_to_upper(String) -> String`
   - Return a new string with all lowercase letters converted to uppercase.
 
-- [ ] `str_to_lower_case(str)`
+- [ ] `string_to_lower(String) -> String`
   - Return a new string with all uppercase letters converted to lowercase.
 
-- [ ] `str_trim(str)`
+- [ ] `string_trim(String) -> String`
   - Return a new string with leading and trailing whitespace removed.
 
-- [ ] `str_substring(str, start, end)`
+- [ ] `string_substring(String, int, int) -> String`
   - Return a new string containing characters from the start index up to, but
     not including, the end index.
 
-- [ ] `str_replace(str, index, ch)`
+- [ ] `string_replace(String, int, char) -> String`
   - Replace the character at the given index with the specified character.
 
-- [ ] `str_insert(str, index, ch)`
+- [ ] `string_insert(String, int, char) -> String`
   - Return a new string with the character inserted at the given index.
 
-- [ ] `str_remove(str, index)`
+- [ ] `string_remove(String, int) -> String`
   - Remove the character at the given index.
 
-- [ ] `str_split(str, index, left, right)`
-  - Split the string at the given index into two strings, store it in `left` and
-    `right`.
+- [ ] `str_split(String, int, String *, String *) -> void`
+  - Split the string at the given index into two strings, store each into given
+    String pointers
