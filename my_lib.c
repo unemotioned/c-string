@@ -86,3 +86,72 @@ size_t string_count(String s, const char c) {
     }
     return cnt;
 }
+
+int string_compare(String a, String b) {
+    if (a.length != b.length) {
+        return 0;
+    }
+
+    for (size_t i = 0; i < a.length; i++) {
+        if (a.data[i] != b.data[i]) {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
+/**
+ * Returns `1` if String a contains String b.
+ */
+int string_contains(String a, String b) {
+    if (a.length < b.length) {
+        return 0;
+    }
+
+    size_t i = 0;
+    for (size_t j = 0; j < a.length; j++) {
+        for (size_t k = 0; k < b.length; k++) {
+            if (a.data[j + k] == b.data[k]) {
+                i++;
+            }
+        }
+
+        // return when there is a match
+        if (i == b.length) {
+            return 1;
+        } else {
+            i = 0;
+        }
+    }
+
+    return 0;
+}
+
+int string_starts_with(String s, String prefix) {
+    if (s.length < prefix.length) {
+        return 0;
+    }
+
+    for (size_t i = 0; i < prefix.length; i++) {
+        if (s.data[i] != prefix.data[i]) {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
+int string_ends_with(String s, String suffix) {
+    if (s.length < suffix.length) {
+        return 0;
+    }
+
+    for (size_t i = 0; i < suffix.length; i++) {
+        if (s.data[i + suffix.length] != suffix.data[i]) {
+            return 0;
+        }
+    }
+
+    return 1;
+}

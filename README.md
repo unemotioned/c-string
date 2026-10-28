@@ -30,7 +30,7 @@ Implementing String in C.
 - [ ] `string_concat(String, String) -> String`
   - Combine two strings into a new string.
 
-- [ ] `string_compare(String, String) -> int`
+- [x] `string_compare(String, String) -> int`
   - Return true if two strings contain the same characters.
 
 - [ ] `string_compare_ignore_case(String, String) -> int`
@@ -43,13 +43,13 @@ Implementing String in C.
 - [x] `string_char_at(String, int) -> int`
   - Return the character at the given index.
 
-- [ ] `string_contains(String, char)`
+- [x] `string_contains(String, String) -> int`
   - Return true if the string contains the given character.
 
-- [ ] `string_starts_with(String, String) -> int`
+- [x] `string_starts_with(String, String) -> int`
   - Return true if the string starts with the given prefix.
 
-- [ ] `string_ends_with(String, String) -> int`
+- [x] `string_ends_with(String, String) -> int`
   - Return true if the string ends with the given suffix.
 
 - [x] `string_char_index(String, char) -> int`

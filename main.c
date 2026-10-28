@@ -60,16 +60,82 @@ void test_count(String s, String foo) {
     printf("nay: %d\n", (int)(size_t)nay);
 }
 
+void test_compare(String foo) {
+    printf("\n===== Test Compare =====\n");
+
+    String bar = string_new("Foobar");
+    String baz = string_new("Hello, World");
+    String f = string_new("foo");
+
+    // length
+    printf("cmp foo and baz: %d\n", string_compare(foo, baz));
+
+    // different
+    printf("cmp foo and f: %d\n", string_compare(foo, f));
+
+    // same
+    printf("cmp foo and bar: %d\n", string_compare(foo, bar));
+}
+
+void test_contains(void) {
+    printf("\n===== Test Contains =====\n");
+
+    String ref = string_new("foobar");
+    String a = string_new("a");
+    String b = string_new("foo");
+    String c = string_new("bar");
+    String d = string_new("Let me go home");
+    String e = string_new("foobar");
+
+    printf("do ref contains a? %d\n", string_contains(ref, a));
+    printf("do ref contains b? %d\n", string_contains(ref, b));
+    printf("do ref contains c? %d\n", string_contains(ref, c));
+    printf("do ref contains d? %d\n", string_contains(ref, d));
+    printf("do ref contains d? %d\n", string_contains(ref, e));
+}
+
+void test_starts_with(void) {
+    printf("\n===== Test Starts With =====\n");
+
+    String ref = string_new("Foobar");
+    String pre1 = string_new("Foo");
+    String pre2 = string_new("foobarfoobar");
+    String pre3 = string_new("oob");
+
+    printf("is pre1 prefix of ref? %d\n", string_starts_with(ref, pre1));
+    printf("is pre2 prefix of ref? %d\n", string_starts_with(ref, pre2));
+    printf("is pre3 prefix of ref? %d\n", string_starts_with(ref, pre3));
+}
+
+void test_ends_with(void) {
+    printf("\n===== Test Ends With =====\n");
+
+    String ref = string_new("Foobar");
+    String suf1 = string_new("bar");
+    String suf2 = string_new("Foobar");
+    String suf3 = string_new("oob");
+    String suf4 = string_new("foofoobar");
+
+    printf("is suf1 suffix of ref? %d\n", string_ends_with(ref, suf1));
+    printf("is suf2 suffix of ref? %d\n", string_ends_with(ref, suf2));
+    printf("is suf3 suffix of ref? %d\n", string_ends_with(ref, suf3));
+    printf("is suf4 suffix of ref? %d\n", string_ends_with(ref, suf4));
+}
+
 int main(void) {
     printf("===== My String =====\n");
 
     String s = string_new("");
     String foo = string_new("Foobar");
 
-    test_empty(s, foo);
-    test_char_at(foo);
-    test_char_index(foo);
-    test_count(s, foo);
+    // test_empty(s, foo);
+    // test_char_at(foo);
+    // test_char_index(foo);
+    // test_count(s, foo);
+    // test_compare(foo);
+    test_contains();
+    // test_starts_with();
+    // test_ends_with();
 
     string_free(&foo);
     string_free(&s);
