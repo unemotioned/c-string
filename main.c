@@ -45,9 +45,9 @@ void test_char_index(String foo) {
         printf("lower case of f is not inside foo\n");
     }
 
-    printf("idx of F: %llu\n", upper_f);
-    printf("idx of f: %llu\n", lower_f);
-    printf("idx of b: %llu\n", lower_b);
+    printf("idx of F: %lu\n", upper_f);
+    printf("idx of f: %lu\n", lower_f);
+    printf("idx of b: %lu\n", lower_b);
 }
 
 void test_count(String s, String foo) {
@@ -123,8 +123,6 @@ void test_ends_with(void) {
 }
 
 int main(void) {
-    printf("===== My String =====\n");
-
     String s = string_new("");
     String foo = string_new("Foobar");
 
