@@ -151,11 +151,15 @@ void test_string_insert(void) {
     // insert A in front of C
     int index = string_char_index(ori, 'C');
     String ins1 = string_insert(ori, index, 'A');
-    printf("ins1: %s\n", ins1.data);
+    printf("ins1: %s", ins1.data);
+    putchar(']');
+    putchar('\n');
 
     // nothing changes
     String ins2 = string_insert(ori, 20, 'F');
-    printf("ins2: %s\n", ins2.data);
+    printf("ins2: %s", ins2.data);
+    putchar(']');
+    putchar('\n');
 }
 
 void test_string_remove(void) {
@@ -170,7 +174,7 @@ int main(void) {
     String s = string_new("");
     String foo = string_new("Foobar");
 
-    test_string_concat();
+    // test_string_concat();
     // test_empty(s, foo);
     // test_char_at(foo);
     // test_char_index(foo);
@@ -180,7 +184,7 @@ int main(void) {
     // test_starts_with();
     // test_ends_with();
     // test_string_replace();
-    // test_string_insert();
+    test_string_insert();
     // test_string_remove();
 
     string_free(&foo);

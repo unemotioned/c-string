@@ -210,6 +210,8 @@ String string_insert(String s, int index, char c) {
         new_p[i + 1] = s.data[i];
     }
 
+    new_p[s.capacity] = '\0';
+
     return string_new(new_p);
 }
 
