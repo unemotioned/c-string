@@ -122,6 +122,38 @@ void test_ends_with(void) {
     printf("is suf4 suffix of ref? %d\n", string_ends_with(ref, suf4));
 }
 
+void test_string_replace(void) {
+    String ori = string_new("Learn how to fly");
+    //                       0123456789012345
+    String rep1 = string_replace(ori, 9, ',');
+    printf("rep1: %s\n", rep1.data);
+
+    String rep2 = string_replace(ori, 16, ' ');
+    printf("rep2: %s\n", rep2.data);
+}
+
+void test_string_insert(void) {
+    //                       012345678901234
+    String ori = string_new("Hello, C world!");
+
+    // insert A in front of C
+    int index = string_char_index(ori, 'C');
+    String ins1 = string_insert(ori, index, 'A');
+    printf("ins1: %s\n", ins1.data);
+
+    // nothing changes
+    String ins2 = string_insert(ori, 20, 'F');
+    printf("ins2: %s\n", ins2.data);
+}
+
+void test_string_remove(void) {
+    String ori = string_new("It's a social construct");
+
+    int index = string_char_index(ori, 'a');
+    String rm1 = string_remove(ori, index);
+    printf("%s\n", rm1.data);
+}
+
 int main(void) {
     String s = string_new("");
     String foo = string_new("Foobar");
@@ -131,9 +163,12 @@ int main(void) {
     // test_char_index(foo);
     // test_count(s, foo);
     // test_compare(foo);
-    test_contains();
+    // test_contains();
     // test_starts_with();
     // test_ends_with();
+    // test_string_replace();
+    // test_string_insert();
+    test_string_remove();
 
     string_free(&foo);
     string_free(&s);

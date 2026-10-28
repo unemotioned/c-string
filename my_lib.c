@@ -155,3 +155,68 @@ int string_ends_with(String s, String suffix) {
 
     return 1;
 }
+
+/**
+ * Return original String struct if index is out of range.
+ */
+String string_replace(String s, int index, char c) {
+    if (index < 0 || (size_t)index >= s.length) {
+        return s;
+    }
+
+    char *og = s.data;
+    og[index] = c;
+    return string_new(og);
+}
+
+/**
+ * Insert character in front of the given index.
+ * Return original String struct if index is out of range.
+ */
+String string_insert(String s, int index, char c) {
+    if (index < 0 || (size_t)index > s.length) {
+        return s;
+    }
+
+    char *new_p = malloc(s.capacity + 1);
+    if (new_p == NULL) {
+        printf("Failed to malloc string_insert");
+        exit(1);
+    }
+
+    for (int i = 0; i < index; i++) {
+        new_p[i] = s.data[i];
+    }
+    new_p[index] = c;
+    for (size_t i = (size_t)index; i < s.length; i++) {
+        new_p[i + 1] = s.data[i];
+    }
+
+    return string_new(new_p);
+}
+
+/**
+ * Return original String struct if index is out of range.
+ */
+String string_remove(String s, int index) {
+    if (index < 0 || (size_t)index > s.length) {
+        return s;
+    }
+
+    char *new_p = malloc(s.length);
+    if (new_p == NULL) {
+        printf("Failed to malloc string_remove");
+        exit(1);
+    }
+
+    for (int i = 0; i < index; i++) {
+        new_p[i] = s.data[i];
+    }
+
+    int offset = sizeof(char);
+    for (size_t i = (size_t)(index + 1); i < s.length; i++) {
+        new_p[i - offset] = s.data[i];
+    }
+
+    return string_new(new_p);
+}

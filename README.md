@@ -72,13 +72,13 @@ Implementing String in C.
   - Return a new string containing characters from the start index up to, but
     not including, the end index.
 
-- [ ] `string_replace(String, int, char) -> String`
+- [x] `string_replace(String, int, char) -> String`
   - Replace the character at the given index with the specified character.
 
-- [ ] `string_insert(String, int, char) -> String`
+- [x] `string_insert(String, int, char) -> String`
   - Return a new string with the character inserted at the given index.
 
-- [ ] `string_remove(String, int) -> String`
+- [x] `string_remove(String, int) -> String`
   - Remove the character at the given index.
 
 - [ ] `str_split(String, int, String *, String *) -> void`
