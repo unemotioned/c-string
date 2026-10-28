@@ -1,96 +1,10 @@
+#include <stdint.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-typedef struct {
-    char *data;
-    size_t length;
-    size_t capacity; // including NUL char
-} String;
+#include "./my_lib.c"
 
-size_t string_length(const char *text) {
-    size_t cnt = 0;
-
-    while (text[cnt] != '\0') {
-        cnt++;
-    }
-
-    return cnt;
-}
-
-String string_new(const char *text) {
-    String s;
-
-    s.length = string_length(text);
-    s.capacity = s.length + 1;
-
-    s.data = malloc(s.capacity);
-    if (s.data == NULL) {
-        printf("Failed to malloc String\n");
-        exit(1);
-    }
-
-    memcpy(s.data, text, s.capacity);
-
-    return s;
-}
-
-void string_free(String *s) {
-    // free s.data which is char *
-    free(s->data);    // access struct's member via pointer
-    *s = (String){0}; // initialize all values with 0s
-}
-
-int string_is_empty(String s) {
-    if (s.length == 0) {
-        return 1;
-    }
-
-    return 0;
-}
-
-/**
- * Return `-1` if index is out of range or character is not found.
- */
-int string_char_at(String s, int index) {
-    if (index < 0 || (size_t)index >= s.length) {
-        return -1;
-    }
-
-    return s.data[index];
-}
-
-/**
- * Compare return value with `SIZE_MAX` from `stdint.h` to check if index of
- * character was found.
- */
-size_t string_char_index(String s, const char c) {
-    size_t index = SIZE_MAX;
-    for (size_t i = 0; i < s.length; i++) {
-        if (s.data[i] == c) {
-            index = i;
-            break;
-        }
-    }
-    return index;
-}
-
-size_t string_count(String s, const char c) {
-    size_t cnt = 0;
-    for (size_t i = 0; i < s.length; i++) {
-        if (s.data[i] == c) {
-            cnt++;
-        }
-    }
-    return cnt;
-}
-
-int main(void) {
-    String s = string_new("");
-
-    printf("data: %s\n", s.data);
-    printf("length: %zu\n", s.length);
-    printf("capacity: %zu\n", s.capacity);
+void test_empty(String s, String foo) {
+    printf("\n===== Test Empty =====\n");
 
     if (string_is_empty(s)) {
         printf("s is empty\n");
@@ -98,23 +12,64 @@ int main(void) {
         printf("s is not empty\n");
     }
 
-    putchar('\n');
-
-    String foo = string_new("Foobar");
-
-    printf("data: %s\n", foo.data);
-    printf("length: %zu\n", foo.length);
-    printf("capacity: %zu\n", foo.capacity);
-
     if (string_is_empty(foo)) {
         printf("foo is empty\n");
     } else {
         printf("foo is not empty\n");
     }
+}
 
-    int index = 10;
-    int char_at = string_char_at(foo, index);
-    printf("char at %d: %c", index, char_at);
+void test_char_at(String foo) {
+    printf("\n===== Test Char At =====\n");
+
+    printf("%s\n", foo.data);
+    printf("length of foo: %d\n", (int)foo.length);
+
+    char c0 = string_char_at(foo, 0);
+    char c1 = string_char_at(foo, 1);
+    char c6 = string_char_at(foo, 6);
+
+    printf("char at 0: %c\n", c0);
+    printf("char at 1: %c\n", c1);
+    printf("char at 6: %c\n", c6);
+}
+
+void test_char_index(String foo) {
+    printf("\n===== Test Char Index =====\n");
+
+    size_t upper_f = string_char_index(foo, 'F');
+    size_t lower_f = string_char_index(foo, 'f');
+    size_t lower_b = string_char_index(foo, 'b');
+
+    if (lower_f == SIZE_MAX) {
+        printf("lower case of f is not inside foo\n");
+    }
+
+    printf("idx of F: %llu\n", upper_f);
+    printf("idx of f: %llu\n", lower_f);
+    printf("idx of b: %llu\n", lower_b);
+}
+
+void test_count(String s, String foo) {
+    printf("\n===== Test Count =====\n");
+
+    size_t yay = string_count(s, 's');
+    size_t nay = string_count(foo, 'o');
+
+    printf("yay: %d\n", (int)(size_t)yay);
+    printf("nay: %d\n", (int)(size_t)nay);
+}
+
+int main(void) {
+    printf("===== My String =====\n");
+
+    String s = string_new("");
+    String foo = string_new("Foobar");
+
+    test_empty(s, foo);
+    test_char_at(foo);
+    test_char_index(foo);
+    test_count(s, foo);
 
     string_free(&foo);
     string_free(&s);
