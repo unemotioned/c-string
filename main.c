@@ -4,6 +4,8 @@
 #include "./my_lib.c"
 
 void test_new(void) {
+    printf("\n===== Test New =====\n");
+
     String s = string_new("Hello, String!");
 
     int i = 0;
@@ -36,6 +38,8 @@ void test_empty(String s, String foo) {
 }
 
 void test_string_copy(void) {
+    printf("\n===== Test Copy =====\n");
+
     String foo = string_new("Foobar");
     printf("foo pointer: %p\n", (void *)foo.data);
 
@@ -48,6 +52,8 @@ void test_string_copy(void) {
 }
 
 void test_string_concat(void) {
+    printf("\n===== Test Concat =====\n");
+
     String foo = string_new("foo");
     String bar = string_new("bar");
 
@@ -162,7 +168,9 @@ void test_ends_with(void) {
     printf("is suf4 suffix of ref? %d\n", string_ends_with(ref, suf4));
 }
 
-void test_trim() {
+void test_trim(void) {
+    printf("\n===== Test Trim =====\n");
+
     String s1 = string_new("     foobar   ");
     String t1 = string_trim(s1);
 
@@ -185,6 +193,8 @@ void test_trim() {
 }
 
 void test_string_replace(void) {
+    printf("\n===== Test Replace =====\n");
+
     String ori = string_new("Learn how to fly");
     //                       0123456789012345
     String rep1 = string_replace(ori, 9, ',');
@@ -195,6 +205,8 @@ void test_string_replace(void) {
 }
 
 void test_string_insert(void) {
+    printf("\n===== Test Insert =====\n");
+
     //                       012345678901234
     String ori = string_new("Hello, C world!");
 
@@ -213,6 +225,8 @@ void test_string_insert(void) {
 }
 
 void test_string_remove(void) {
+    printf("\n===== Test Remove =====\n");
+
     String ori = string_new("It's a social construct");
 
     int index = string_char_index(ori, 'a');
@@ -221,6 +235,8 @@ void test_string_remove(void) {
 }
 
 void test_split(void) {
+    printf("\n===== Test Split =====\n");
+
     String s = string_new("Hello, World!");
 
     String a = {0};
