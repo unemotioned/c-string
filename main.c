@@ -3,6 +3,22 @@
 
 #include "./my_lib.c"
 
+void test_new(void) {
+    String s = string_new("Hello, String!");
+
+    int i = 0;
+    while (s.data[i] != '\0') {
+        putchar(s.data[i]);
+        i++;
+    }
+    printf("]\n");
+
+    for (size_t i = 0; i < s.length; i++) {
+        putchar(s.data[i]);
+    }
+    printf("]\n");
+}
+
 void test_empty(String s, String foo) {
     printf("\n===== Test Empty =====\n");
 
@@ -208,6 +224,7 @@ int main(void) {
     String s = string_new("");
     String foo = string_new("Foobar");
 
+    // test_new();
     // test_string_copy();
     // test_string_concat();
     // test_empty(s, foo);
