@@ -90,7 +90,7 @@ gcc -xc -std=c11 -Wall -Wextra -pedantic -O2 main.c -o main
 - [x] `string_remove(String, int) -> String`
   - Remove the character at the given index.
 
-- [ ] `str_split(String, int, String *, String *) -> int`
+- [x] `string_split(String, int, String *, String *) -> int`
   - Split the string at the given index into two strings, store each into given
     String pointers.
   - Return true on success.

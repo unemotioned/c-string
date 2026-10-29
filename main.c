@@ -248,12 +248,11 @@ void test_split(void) {
     int res = string_split(s, index, &a, &b);
     if (res == 1) {
         printf("split success\n");
+        string_print(a);
+        string_print(b);
     } else {
         printf("split failed\n");
     }
-
-    printf("a: %s\n", a.data);
-    printf("b: %s\n", b.data);
 }
 
 int main(void) {
