@@ -8,6 +8,16 @@ typedef struct {
     size_t capacity; // including terminator
 } String;
 
+void string_print(const String s) {
+    char c = ' ';
+    size_t index = 0;
+    while (c = s.data[index], c != '\0') {
+        putchar(c);
+        index++;
+    }
+    putchar('\n');
+}
+
 size_t string_length(const char *text) {
     size_t cnt = 0;
 
