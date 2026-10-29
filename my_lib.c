@@ -279,3 +279,52 @@ String string_remove(String s, int index) {
 
     return string_new(new_p);
 }
+
+/**
+ * Character at the index will be included to the String at the rear.
+ */
+int string_split(const String a, const int index, String *front, String *rear) {
+    if (index < 0 || (size_t)index >= a.length) {
+        return 0;
+    }
+
+    String s = string_new("");
+
+    // Hello, World!
+    // 0123456789012
+    // length == 12
+    // capacity == 13
+    // index = 5
+    // front == [Hello]
+    // rear == [, World!]
+
+    // TODO: try refactoring `front->data` to pointer-pointer
+    const short term = 1;
+    front->data = malloc(index + term);
+    if (front->data == NULL) {
+        printf("Failed to malloc front at string_split\n");
+        return 0;
+    }
+
+    for (size_t i = 0; i < index; i++) {
+        front->data[i] = a.data[i];
+    }
+    front->data[index] = '\0';
+    front->length = string_length(front->data);
+    front->capacity = front->length + 1;
+
+    printf("front: %s\n", front->data);
+
+    const short term_and_index = 2;
+    rear->data = malloc(a.length - index + term_and_index);
+    if (rear->data == NULL) {
+        printf("Failed to malloc rear at string_split\n");
+        return 0;
+    }
+
+    // TODO: finish rear split
+    for (size_t i = index; i < a.length; i++) {
+    }
+
+    return 1;
+}

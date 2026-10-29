@@ -220,6 +220,26 @@ void test_string_remove(void) {
     printf("%s\n", rm1.data);
 }
 
+void test_split(void) {
+    String s = string_new("Hello, World!");
+
+    String a = {0};
+    String b = {0};
+    printf("a_p: %p\n", (void *)&a);
+    printf("b_p: %p\n", (void *)&b);
+
+    int index = 5;
+    int res = string_split(s, index, &a, &b);
+    if (res == 1) {
+        printf("split success\n");
+    } else {
+        printf("split failed\n");
+    }
+
+    printf("a: %s\n", a.data);
+    printf("b: %s\n", b.data);
+}
+
 int main(void) {
     String s = string_new("");
     String foo = string_new("Foobar");
@@ -235,10 +255,11 @@ int main(void) {
     // test_contains();
     // test_starts_with();
     // test_ends_with();
-    test_trim();
+    // test_trim();
     // test_string_replace();
     // test_string_insert();
     // test_string_remove();
+    test_split();
 
     string_free(&foo);
     string_free(&s);

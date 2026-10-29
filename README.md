@@ -81,6 +81,7 @@ Implementing String in C.
 - [x] `string_remove(String, int) -> String`
   - Remove the character at the given index.
 
-- [ ] `str_split(String, int, String *, String *) -> void`
+- [ ] `str_split(String, int, String *, String *) -> int`
   - Split the string at the given index into two strings, store each into given
-    String pointers
+    String pointers.
+  - Return true on success.
