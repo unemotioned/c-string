@@ -19,6 +19,18 @@ void test_empty(String s, String foo) {
     }
 }
 
+void test_string_copy(void) {
+    String foo = string_new("Foobar");
+    printf("foo pointer: %p\n", (void *)foo.data);
+
+    String bar = string_copy(foo);
+    printf("bar pointer: %p\n", (void *)bar.data);
+
+    if (foo.data != bar.data) {
+        printf("They are different strings\n");
+    }
+}
+
 void test_string_concat(void) {
     String foo = string_new("foo");
     String bar = string_new("bar");
@@ -57,9 +69,9 @@ void test_char_index(String foo) {
         printf("lower case of f is not inside foo\n");
     }
 
-    printf("idx of F: %lu\n", upper_f);
-    printf("idx of f: %lu\n", lower_f);
-    printf("idx of b: %lu\n", lower_b);
+    printf("idx of F: %zu\n", upper_f);
+    printf("idx of f: %zu\n", lower_f);
+    printf("idx of b: %zu\n", lower_b);
 }
 
 void test_count(String s, String foo) {
@@ -174,6 +186,7 @@ int main(void) {
     String s = string_new("");
     String foo = string_new("Foobar");
 
+    test_string_copy();
     // test_string_concat();
     // test_empty(s, foo);
     // test_char_at(foo);
@@ -184,7 +197,7 @@ int main(void) {
     // test_starts_with();
     // test_ends_with();
     // test_string_replace();
-    test_string_insert();
+    // test_string_insert();
     // test_string_remove();
 
     string_free(&foo);

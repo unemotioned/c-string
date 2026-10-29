@@ -49,6 +49,10 @@ int string_is_empty(String s) {
     return 0;
 }
 
+String string_copy(String s) {
+    return string_new(s.data);
+}
+
 String string_concat(String a, String b) {
     char *new_p = malloc(a.length + b.length);
     if (new_p == NULL) {

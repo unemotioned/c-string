@@ -24,7 +24,7 @@ Implementing String in C.
 - [x] `string_length(char *) -> size_t`
   - Get the length of a string, excluding the null terminator.
 
-- [ ] `string_copy(String) -> String`
+- [x] `string_copy(String) -> String`
   - Create and return a new copy of a string.
 
 - [x] `string_concat(String, String) -> String`
