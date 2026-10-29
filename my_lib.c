@@ -178,6 +178,41 @@ int string_ends_with(String s, String suffix) {
     return 1;
 }
 
+String string_trim(String s) {
+    size_t front = 0;
+    for (size_t i = 0; i < s.length; i++) {
+        if (s.data[i] == ' ') {
+            front++;
+        } else {
+            break;
+        }
+    }
+
+    size_t rear = s.length - 1;
+    for (size_t i = rear; i > front; i--) {
+        if (s.data[i] == ' ') {
+            rear--;
+        } else {
+            break;
+        }
+    }
+
+    int trimmed_size = rear - front + 1;
+    char *new_p = NULL;
+    new_p = malloc(trimmed_size);
+    if (new_p == NULL) {
+        printf("Failed to malloc string_trim\n");
+        exit(1);
+    }
+
+    for (size_t i = front; i <= rear; i++) {
+        new_p[i - front] = s.data[i];
+    }
+    new_p[trimmed_size] = '\0';
+
+    return string_new(new_p);
+}
+
 /**
  * Return original String struct if index is out of range.
  */

@@ -65,7 +65,7 @@ Implementing String in C.
 - [ ] `string_to_lower(String) -> String`
   - Return a new string with all uppercase letters converted to lowercase.
 
-- [ ] `string_trim(String) -> String`
+- [x] `string_trim(String) -> String`
   - Return a new string with leading and trailing whitespace removed.
 
 - [ ] `string_substring(String, int, int) -> String`

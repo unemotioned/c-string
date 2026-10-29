@@ -146,6 +146,28 @@ void test_ends_with(void) {
     printf("is suf4 suffix of ref? %d\n", string_ends_with(ref, suf4));
 }
 
+void test_trim() {
+    String s1 = string_new("     foobar   ");
+    String t1 = string_trim(s1);
+
+    printf("t1: [%s]\n", t1.data);
+
+    String s2 = string_new("     foo  bar");
+    String t2 = string_trim(s2);
+
+    printf("t2: [%s]\n", t2.data);
+
+    String s3 = string_new("     foo  bar  ");
+    String t3 = string_trim(s3);
+
+    printf("t3: [%s]\n", t3.data);
+
+    String s4 = string_new("Foobar");
+    String t4 = string_trim(s4);
+
+    printf("t4: [%s]\n", t4.data);
+}
+
 void test_string_replace(void) {
     String ori = string_new("Learn how to fly");
     //                       0123456789012345
@@ -186,7 +208,7 @@ int main(void) {
     String s = string_new("");
     String foo = string_new("Foobar");
 
-    test_string_copy();
+    // test_string_copy();
     // test_string_concat();
     // test_empty(s, foo);
     // test_char_at(foo);
@@ -196,6 +218,7 @@ int main(void) {
     // test_contains();
     // test_starts_with();
     // test_ends_with();
+    test_trim();
     // test_string_replace();
     // test_string_insert();
     // test_string_remove();
