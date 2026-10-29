@@ -1,0 +1,12 @@
+{
+  "watch": [
+    "main.c",
+    "my_lib.c"
+  ],
+  "ext": "c",
+  "ignore": [],
+  "exec": "gcc -xc -std=c11 -Wall -Wextra -pedantic -O2 main.c -o main && ./main",
+  "events": {
+    "start": "clear"
+  }
+}
