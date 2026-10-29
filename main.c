@@ -168,6 +168,22 @@ void test_ends_with(void) {
     printf("is suf4 suffix of ref? %d\n", string_ends_with(ref, suf4));
 }
 
+void test_substring(void) {
+    printf("\n===== Test Substring =====\n");
+
+    String s = string_new("Foobar");
+    String sub1 = string_substring(s, 2, 5);
+    string_print(sub1);
+
+    // start larger then stop exception
+    String sub2 = string_substring(s, 5, 2);
+    string_print(sub2);
+
+    // index out of range exception
+    String sub3 = string_substring(s, -1, 5);
+    string_print(sub3);
+}
+
 void test_trim(void) {
     printf("\n===== Test Trim =====\n");
 
@@ -270,11 +286,12 @@ int main(void) {
     // test_contains();
     // test_starts_with();
     // test_ends_with();
+    test_substring();
     // test_trim();
     // test_string_replace();
     // test_string_insert();
     // test_string_remove();
-    test_split();
+    // test_split();
 
     string_free(&foo);
     string_free(&s);

@@ -223,6 +223,28 @@ String string_trim(String s) {
     return string_new(new_p);
 }
 
+String string_substring(String s, int start, int stop) {
+    if (start < 0 || (size_t)stop > s.length || start >= stop) {
+        return s;
+    }
+
+    size_t size = stop - start;
+    char *sub_p = NULL;
+
+    sub_p = malloc(size + 1);
+    if (sub_p == NULL) {
+        printf("Failed to malloc string_substring\n");
+        return s;
+    }
+
+    for (int i = start; i < stop; i++) {
+        sub_p[i - start] = s.data[i];
+    }
+    sub_p[stop] = '\0';
+
+    return string_new(sub_p);
+}
+
 /**
  * Return original String struct if index is out of range.
  */

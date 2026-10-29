@@ -77,7 +77,7 @@ gcc -xc -std=c11 -Wall -Wextra -pedantic -O2 main.c -o main
 - [x] `string_trim(String) -> String`
   - Return a new string with leading and trailing whitespace removed.
 
-- [ ] `string_substring(String, int, int) -> String`
+- [x] `string_substring(String, int, int) -> String`
   - Return a new string containing characters from the start index up to, but
     not including, the end index.
 
