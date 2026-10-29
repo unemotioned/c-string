@@ -12,6 +12,15 @@ Implementing String in C.
 
 ---
 
+## Compile and Run
+
+```sh
+gcc -xc -std=c11 -Wall -Wextra -pedantic -O2 main.c -o main
+./main
+```
+
+---
+
 ## TODO
 
 - [x] `string_new(char *) -> String`
