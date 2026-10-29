@@ -21,7 +21,7 @@ gcc -xc -std=c11 -Wall -Wextra -pedantic -O2 main.c -o main
 
 ---
 
-## TODO
+## Functions
 
 - [x] `string_new(char *) -> String`
   - Create Struct for String that store text, length and capacity(including
@@ -94,3 +94,21 @@ gcc -xc -std=c11 -Wall -Wextra -pedantic -O2 main.c -o main
   - Split the string at the given index into two strings, store each into given
     String pointers.
   - Return true on success.
+
+---
+
+## TODOs
+
+Java String methods not implemented yet.
+
+- compareTo - compare using lexicographic
+- compareToIgnoreCase
+- indexOf
+- lastIndexOf
+- isBlank
+- replace
+- split
+- join
+- repeat
+- lines
+- regionMatches
