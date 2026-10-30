@@ -390,10 +390,10 @@ int main(void) {
     // test_trim();
     // test_replace();
     // test_insert();
-    test_remove();
+    // test_remove();
     // test_split();
     // test_region_match();
-    // test_join();
+    test_join();
 
     return 0;
 }

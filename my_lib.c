@@ -528,7 +528,7 @@ String string_join(int count, ...) {
 
         curr_size += s.length;
 
-        char *new_p = realloc(joined_p, curr_size - 1);
+        char *new_p = realloc(joined_p, curr_size + 1);
         if (new_p == NULL) {
             printf("Failed to malloc string_join\n");
             return (String){0};
@@ -547,6 +547,7 @@ String string_join(int count, ...) {
     va_end(args); // free memory
 
     String joined = string_new(joined_p);
+    free(joined_p);
 
     return joined;
 }
