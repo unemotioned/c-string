@@ -210,6 +210,27 @@ void test_substring(void) {
     string_print(sub3);
 }
 
+void test_to_upper(void) {
+    printf("\n===== Test To Upper =====\n");
+
+    String a = string_new("ThisIsPascalCasing");
+    string_print(string_to_upper(a));
+}
+
+void test_to_lower(void) {
+    printf("\n===== Test To Lower =====\n");
+
+    String a = string_new("ThisIsPascalCasing");
+    string_print(string_to_lower(a));
+}
+
+void test_toggle_case(void) {
+    printf("\n===== Test Toggle Case =====\n");
+
+    String a = string_new("This Is Pascal Casing.");
+    string_print(string_toggle_case(a));
+}
+
 void test_trim(void) {
     printf("\n===== Test Trim =====\n");
 
@@ -346,12 +367,15 @@ int main(void) {
     // test_starts_with();
     // test_ends_with();
     // test_substring();
+    // test_to_upper();
+    // test_to_lower();
+    test_toggle_case();
     // test_trim();
     // test_replace();
     // test_insert();
     // test_remove();
     // test_split();
-    test_region_match();
+    // test_region_match();
     // test_join();
 
     return 0;

@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+const int OFFSET = (int)'a' - (int)'A';
+
 typedef struct {
     char *data;
     size_t length;
@@ -207,6 +209,86 @@ int string_ends_with(String s, String suffix) {
     }
 
     return 1;
+}
+
+String string_to_upper(String s) {
+    char *p = malloc(s.capacity);
+    if (p == NULL) {
+        printf("Failed to malloc string_to_upper\n");
+        return s;
+    }
+
+    for (size_t i = 0; i < s.length; i++) {
+        if ((int)s.data[i] >= (int)'a' && (int)s.data[i] <= (int)'z') {
+            p[i] = (char)((int)s.data[i] - OFFSET);
+        } else {
+            p[i] = s.data[i];
+        }
+    }
+    p[s.length] = '\0';
+
+    String upper = {
+        .data = p,
+        .length = s.length,
+        .capacity = s.capacity,
+    };
+    p = NULL; // to avoid dangling pointer
+
+    return upper;
+}
+
+String string_to_lower(String s) {
+    char *p = malloc(s.capacity);
+    if (p == NULL) {
+        printf("Failed to malloc string_to_lower\n");
+        return s;
+    }
+
+    for (size_t i = 0; i < s.length; i++) {
+        if ((int)s.data[i] >= (int)'A' && (int)s.data[i] <= (int)'Z') {
+            p[i] = (char)((int)s.data[i] + OFFSET);
+        } else {
+            p[i] = s.data[i];
+        }
+    }
+    p[s.length] = '\0';
+
+    String lower = {
+        .data = p,
+        .length = s.length,
+        .capacity = s.capacity,
+    };
+    p = NULL;
+
+    return lower;
+}
+
+String string_toggle_case(String s) {
+    char *p = malloc(s.capacity);
+    if (p == NULL) {
+        printf("Failed to malloc string_toggle_case\n");
+        return s;
+    }
+
+    for (size_t i = 0; i < s.length; i++) {
+        if (s.data[i] >= 'A' && s.data[i] <= 'Z') {
+            p[i] = s.data[i] + OFFSET;
+        } else if (s.data[i] >= 'a' && s.data[i] <= 'z') {
+            p[i] = s.data[i] - OFFSET;
+        } else {
+            p[i] = s.data[i];
+        }
+    }
+    p[s.length] = '\0';
+
+    String toggle = {
+        .data = p,
+        .length = s.length,
+        .capacity = s.capacity,
+    };
+    p = NULL;
+
+    return toggle;
 }
 
 String string_trim(String s) {

@@ -72,11 +72,14 @@ gcc -xc -std=c11 -Wall -Wextra -pedantic -O2 main.c -o main
 - [x] `string_count(String, char) -> int`
   - Count how many times the given character appears in the string.
 
-- [ ] `string_to_upper(String) -> String`
+- [x] `string_to_upper(String) -> String`
   - Return a new string with all lowercase letters converted to uppercase.
 
-- [ ] `string_to_lower(String) -> String`
+- [x] `string_to_lower(String) -> String`
   - Return a new string with all uppercase letters converted to lowercase.
+
+- [x] `string_toggle_case(String) -> String`
+  - Return a new string with all upper and lower case letters with case flipped.
 
 - [x] `string_trim(String) -> String`
   - Return a new string with leading and trailing whitespace removed.
