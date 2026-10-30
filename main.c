@@ -220,7 +220,7 @@ void test_trim(void) {
     printf("t4: [%s]\n", t4.data);
 }
 
-void test_string_replace(void) {
+void test_replace(void) {
     printf("\n===== Test Replace =====\n");
 
     String ori = string_new("Learn how to fly");
@@ -232,7 +232,7 @@ void test_string_replace(void) {
     printf("rep2: %s\n", rep2.data);
 }
 
-void test_string_insert(void) {
+void test_insert(void) {
     printf("\n===== Test Insert =====\n");
 
     //                       012345678901234
@@ -252,7 +252,7 @@ void test_string_insert(void) {
     putchar('\n');
 }
 
-void test_string_remove(void) {
+void test_remove(void) {
     printf("\n===== Test Remove =====\n");
 
     String ori = string_new("It's a social construct");
@@ -283,6 +283,22 @@ void test_split(void) {
     }
 }
 
+void test_join(void) {
+    printf("\n===== Test Join =====\n");
+
+    String s1 = string_new("Hello");
+    String s2 = string_new(",");
+    String s3 = string_new(" ");
+    String s4 = string_new("World");
+    String s5 = string_new("!");
+    string_print(string_join(5, s1, s2, s3, s4, s5));
+
+    String f1 = string_new("foo");
+    String f2 = string_new("bar");
+    String f3 = string_new("baz");
+    string_print(string_join(3, f1, f2, f3));
+}
+
 int main(void) {
     // test_new();
     // test_string_copy();
@@ -295,12 +311,13 @@ int main(void) {
     // test_contains();
     // test_starts_with();
     // test_ends_with();
-    test_substring();
+    // test_substring();
     // test_trim();
-    // test_string_replace();
-    // test_string_insert();
-    // test_string_remove();
+    // test_replace();
+    // test_insert();
+    // test_remove();
     // test_split();
+    test_join();
 
     return 0;
 }

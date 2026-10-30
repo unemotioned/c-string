@@ -98,6 +98,5 @@ gcc -xc -std=c11 -Wall -Wextra -pedantic -O2 main.c -o main
 - [ ] `string_region_match(String, String) -> int`
   - compare regions in two different strings to check if they are equal.
 
-- [ ] `string_join(String, ...) -> String`
-  - Take multiple String structs as arguments and return single string joined
-    all together.
+- [x] `string_join(int) -> String`
+  - Take number of Strings to join and varying number of String structs.

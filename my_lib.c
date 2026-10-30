@@ -1,3 +1,4 @@
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -350,4 +351,42 @@ int string_split(const String s, const int index, String *front, String *rear) {
     rear->capacity = rear->length + 1;
 
     return 1;
+}
+
+String string_join(int count, ...) {
+    String joined = {0};
+    size_t prev_size = 0;
+    size_t curr_size = 0;
+    char *joined_p = NULL;
+
+    va_list args;
+    // initialize args to point to first argument after count
+    va_start(args, count);
+
+    for (int i = 0; i < count; i++) {
+        String s = va_arg(args, String);
+
+        curr_size += s.length;
+
+        char *new_p = realloc(joined_p, curr_size - 1);
+        if (new_p == NULL) {
+            printf("Failed to malloc string_join\n");
+            return joined;
+        }
+        joined_p = new_p;
+
+        joined_p[prev_size + s.length] = '\0';
+        for (int j = 0; j < s.length; j++) {
+            joined_p[prev_size + j] = s.data[j];
+        }
+
+        prev_size = curr_size;
+        string_free(&s);
+    }
+
+    va_end(args); // free memory
+
+    joined = string_new(joined_p);
+
+    return joined;
 }
