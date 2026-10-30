@@ -49,6 +49,10 @@ gcc -xc -std=c11 -Wall -Wextra -pedantic -O2 main.c -o main
 - [x] `string_is_empty(String) -> int`
   - Return true if the string is empty.
 
+- [x] `string_is_blank(String) -> int`
+  - Return true if the string only holds whitespace.
+  - Return true if the length of string is 0.
+
 - [x] `string_char_at(String, int) -> int`
   - Return the character at the given index.
 

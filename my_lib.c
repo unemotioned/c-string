@@ -69,6 +69,24 @@ int string_is_empty(String s) {
     return 0;
 }
 
+/**
+ * True if the String only contains whtespaces.
+ * Or length of String is 0.
+ */
+int string_is_blank(String s) {
+    if (s.length == 0) {
+        return 1;
+    }
+
+    for (size_t i = 0; i < s.length; i++) {
+        if (s.data[i] != ' ') {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
 String string_copy(String s) {
     return string_new(s.data);
 }

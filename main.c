@@ -47,6 +47,23 @@ void test_empty(void) {
     }
 }
 
+void test_blank(void) {
+    printf("\n===== Test Blank =====\n");
+
+    String s1 = string_new("Consciouis String");
+    printf("Is s1 blank?: %s\n", string_is_blank(s1) ? "True" : "False");
+
+    String s2 = string_new("   ");
+    printf("Is s2 blank?: %s\n", string_is_blank(s2) ? "True" : "False");
+
+    String s3 = string_new("");
+    printf("Is s3 blank?: %s\n", string_is_blank(s3) ? "True" : "False");
+
+    string_free(&s3);
+    string_free(&s2);
+    string_free(&s1);
+}
+
 void test_string_copy(void) {
     printf("\n===== Test Copy =====\n");
 
@@ -373,7 +390,7 @@ int main(void) {
     // test_new();
     // test_string_copy();
     // test_string_concat();
-    // test_empty();
+    test_blank();
     // test_char_at();
     // test_index_of();
     // test_index_of_str();
@@ -393,7 +410,7 @@ int main(void) {
     // test_remove();
     // test_split();
     // test_region_match();
-    test_join();
+    // test_join();
 
     return 0;
 }
