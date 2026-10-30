@@ -67,9 +67,7 @@ void test_string_concat(void) {
     String foo = string_new("foo");
     String bar = string_new("bar");
 
-    printf("%s", string_concat(foo, bar).data);
-    putchar(']');
-    putchar('\n');
+    string_print(string_concat(foo, bar));
 
     string_free(&bar);
     string_free(&foo);
@@ -308,11 +306,11 @@ void test_insert(void) {
 void test_remove(void) {
     printf("\n===== Test Remove =====\n");
 
-    String ori = string_new("It's a social construct");
+    String s = string_new("It's a social construct");
 
-    int index = string_index_of(ori, 'a');
-    String rm1 = string_remove(ori, index);
-    printf("%s\n", rm1.data);
+    int i = string_index_of(s, 'a');
+    String rm = string_remove(s, i);
+    string_print(rm);
 }
 
 void test_split(void) {
@@ -381,7 +379,7 @@ int main(void) {
     // test_index_of_str();
     // test_count();
     // test_equals();
-    test_equals_ignore_case();
+    // test_equals_ignore_case();
     // test_contains();
     // test_starts_with();
     // test_ends_with();
@@ -392,7 +390,7 @@ int main(void) {
     // test_trim();
     // test_replace();
     // test_insert();
-    // test_remove();
+    test_remove();
     // test_split();
     // test_region_match();
     // test_join();

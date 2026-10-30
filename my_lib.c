@@ -67,22 +67,24 @@ String string_copy(String s) {
 }
 
 String string_concat(String a, String b) {
-    char *new_p = malloc(a.length + b.length);
-    if (new_p == NULL) {
+    char *p = malloc(a.length + b.length);
+    if (p == NULL) {
         printf("Failed to malloc string_concat\n");
-        String empty = {0};
-        return empty;
+        return (String){0}; // return String struct full of 0s
     }
 
     for (size_t i = 0; i < a.length; i++) {
-        new_p[i] = a.data[i];
+        p[i] = a.data[i];
     }
     for (size_t i = 0; i < b.length; i++) {
-        new_p[i + a.length] = b.data[i];
+        p[i + a.length] = b.data[i];
     }
-    new_p[a.length + b.length + 1] = '\0';
+    p[a.length + b.length + 1] = '\0';
 
-    return string_new(new_p);
+    String new = string_new(p);
+    free(p);
+
+    return new;
 }
 
 /**
@@ -248,7 +250,7 @@ String string_to_upper(String s) {
     char *p = malloc(s.capacity);
     if (p == NULL) {
         printf("Failed to malloc string_to_upper\n");
-        return s;
+        return (String){0};
     }
 
     for (size_t i = 0; i < s.length; i++) {
@@ -274,7 +276,7 @@ String string_to_lower(String s) {
     char *p = malloc(s.capacity);
     if (p == NULL) {
         printf("Failed to malloc string_to_lower\n");
-        return s;
+        return (String){0};
     }
 
     for (size_t i = 0; i < s.length; i++) {
@@ -300,7 +302,7 @@ String string_toggle_case(String s) {
     char *p = malloc(s.capacity);
     if (p == NULL) {
         printf("Failed to malloc string_toggle_case\n");
-        return s;
+        return (String){0};
     }
 
     for (size_t i = 0; i < s.length; i++) {
@@ -348,7 +350,7 @@ String string_trim(String s) {
     new_p = malloc(trimmed_size);
     if (new_p == NULL) {
         printf("Failed to malloc string_trim\n");
-        return s;
+        return (String){0};
     }
 
     for (size_t i = front; i <= rear; i++) {
@@ -361,7 +363,7 @@ String string_trim(String s) {
 
 String string_substring(String s, int start, int stop) {
     if (start < 0 || (size_t)stop > s.length || start >= stop) {
-        return s;
+        return (String){0};
     }
 
     size_t size = stop - start;
@@ -370,7 +372,7 @@ String string_substring(String s, int start, int stop) {
     sub_p = malloc(size + 1);
     if (sub_p == NULL) {
         printf("Failed to malloc string_substring\n");
-        return s;
+        return (String){0};
     }
 
     for (int i = start; i < stop; i++) {
@@ -378,7 +380,10 @@ String string_substring(String s, int start, int stop) {
     }
     sub_p[size] = '\0';
 
-    return string_new(sub_p);
+    String sub = string_new(sub_p);
+    free(sub_p);
+
+    return sub;
 }
 
 /**
@@ -386,7 +391,7 @@ String string_substring(String s, int start, int stop) {
  */
 String string_replace(String s, int index, char c) {
     if (index < 0 || (size_t)index >= s.length) {
-        return s;
+        return (String){0};
     }
 
     char *og = s.data;
@@ -400,26 +405,28 @@ String string_replace(String s, int index, char c) {
  */
 String string_insert(String s, int index, char c) {
     if (index < 0 || (size_t)index > s.length) {
-        return s;
+        return (String){0};
     }
 
-    char *new_p = malloc(s.capacity + 1);
-    if (new_p == NULL) {
+    char *ins_p = malloc(s.capacity + 1);
+    if (ins_p == NULL) {
         printf("Failed to malloc string_insert");
-        return s;
+        return (String){0};
     }
 
     for (int i = 0; i < index; i++) {
-        new_p[i] = s.data[i];
+        ins_p[i] = s.data[i];
     }
-    new_p[index] = c;
+    ins_p[index] = c;
     for (size_t i = (size_t)index; i < s.length; i++) {
-        new_p[i + 1] = s.data[i];
+        ins_p[i + 1] = s.data[i];
     }
+    ins_p[s.capacity] = '\0';
 
-    new_p[s.capacity] = '\0';
+    String ins = string_new(ins_p);
+    free(ins_p);
 
-    return string_new(new_p);
+    return ins;
 }
 
 /**
@@ -427,25 +434,29 @@ String string_insert(String s, int index, char c) {
  */
 String string_remove(String s, int index) {
     if (index < 0 || (size_t)index > s.length) {
-        return s;
+        return (String){0};
     }
 
-    char *new_p = malloc(s.length);
-    if (new_p == NULL) {
+    char *rm_p = malloc(s.length);
+    if (rm_p == NULL) {
         printf("Failed to malloc string_remove");
-        return s;
+        return (String){0};
     }
 
     for (int i = 0; i < index; i++) {
-        new_p[i] = s.data[i];
+        rm_p[i] = s.data[i];
     }
 
     int offset = sizeof(char);
     for (size_t i = (size_t)(index + 1); i < s.length; i++) {
-        new_p[i - offset] = s.data[i];
+        rm_p[i - offset] = s.data[i];
     }
+    rm_p[s.length - 1] = '\0';
 
-    return string_new(new_p);
+    String rm = string_new(rm_p);
+    free(rm_p);
+
+    return rm;
 }
 
 /**
@@ -504,7 +515,6 @@ int string_region_match(String a, int offset, String b, int start, int stop) {
 }
 
 String string_join(int count, ...) {
-    String joined = {0};
     size_t prev_size = 0;
     size_t curr_size = 0;
     char *joined_p = NULL;
@@ -521,7 +531,7 @@ String string_join(int count, ...) {
         char *new_p = realloc(joined_p, curr_size - 1);
         if (new_p == NULL) {
             printf("Failed to malloc string_join\n");
-            return joined;
+            return (String){0};
         }
         joined_p = new_p;
 
@@ -536,7 +546,7 @@ String string_join(int count, ...) {
 
     va_end(args); // free memory
 
-    joined = string_new(joined_p);
+    String joined = string_new(joined_p);
 
     return joined;
 }
