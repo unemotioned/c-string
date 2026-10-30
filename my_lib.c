@@ -94,12 +94,12 @@ int string_char_at(String s, int index) {
 }
 
 /**
- * Return index of 1st occurrence given character
+ * Return index of 1st occurrence given character(s).
  *
  * Compare return value with `SIZE_MAX` from `stdint.h` to check if index of
  * character was found.
  */
-size_t string_char_index(String s, const char c) {
+size_t string_index_of(String s, const char c) {
     size_t index = SIZE_MAX;
     for (size_t i = 0; i < s.length; i++) {
         if (s.data[i] == c) {

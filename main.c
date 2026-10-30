@@ -21,19 +21,29 @@ void test_new(void) {
     printf("]\n");
 }
 
-void test_empty(String s, String foo) {
+void test_empty(void) {
+    String s1 = string_new("");
+    String s2 = string_new("Foobar");
+    String s3 = {0};
+
     printf("\n===== Test Empty =====\n");
 
-    if (string_is_empty(s)) {
-        printf("s is empty\n");
+    if (string_is_empty(s1)) {
+        printf("s1 is empty\n");
     } else {
-        printf("s is not empty\n");
+        printf("s1 is not empty\n");
     }
 
-    if (string_is_empty(foo)) {
-        printf("foo is empty\n");
+    if (string_is_empty(s2)) {
+        printf("s2 is empty\n");
     } else {
-        printf("foo is not empty\n");
+        printf("s2 is not empty\n");
+    }
+
+    if (string_is_empty(s3)) {
+        printf("s3 is empty\n");
+    } else {
+        printf("s3 is not empty\n");
     }
 }
 
@@ -65,27 +75,28 @@ void test_string_concat(void) {
     string_free(&foo);
 }
 
-void test_char_at(String foo) {
+void test_char_at() {
+    String s = string_new("Foobar is German");
+    //                     0123456789012345
+
     printf("\n===== Test Char At =====\n");
 
-    printf("%s\n", foo.data);
-    printf("length of foo: %d\n", (int)foo.length);
+    printf("%s\n", s.data);
+    printf("length of foo: %d\n", (int)s.length);
 
-    char c0 = string_char_at(foo, 0);
-    char c1 = string_char_at(foo, 1);
-    char c6 = string_char_at(foo, 6);
-
-    printf("char at 0: %c\n", c0);
-    printf("char at 1: %c\n", c1);
-    printf("char at 6: %c\n", c6);
+    printf("char at 0: %c\n", string_char_at(s, 0));
+    printf("char at 1: %c\n", string_char_at(s, 1));
+    printf("char at 16: %c\n", string_char_at(s, 16));
 }
 
-void test_char_index(String foo) {
+void test_index_of() {
     printf("\n===== Test Char Index =====\n");
 
-    size_t upper_f = string_char_index(foo, 'F');
-    size_t lower_f = string_char_index(foo, 'f');
-    size_t lower_b = string_char_index(foo, 'b');
+    String foo = string_new("Foobar");
+
+    size_t upper_f = string_index_of(foo, 'F');
+    size_t lower_f = string_index_of(foo, 'f');
+    size_t lower_b = string_index_of(foo, 'b');
 
     if (lower_f == SIZE_MAX) {
         printf("lower case of f is not inside foo\n");
@@ -96,14 +107,14 @@ void test_char_index(String foo) {
     printf("idx of b: %zu\n", lower_b);
 }
 
-void test_count(String s, String foo) {
+void test_count() {
     printf("\n===== Test Count =====\n");
 
-    size_t yay = string_count(s, 's');
-    size_t nay = string_count(foo, 'o');
+    String s1 = string_new("");
+    String s2 = string_new("Foobar");
 
-    printf("yay: %d\n", (int)(size_t)yay);
-    printf("nay: %d\n", (int)(size_t)nay);
+    printf("'s' in s1: %zu\n", string_count(s1, 's'));
+    printf("'o' in s2: %zu\n", string_count(s2, 'o'));
 }
 
 void test_equal(void) {
@@ -228,7 +239,7 @@ void test_string_insert(void) {
     String ori = string_new("Hello, C world!");
 
     // insert A in front of C
-    int index = string_char_index(ori, 'C');
+    int index = string_index_of(ori, 'C');
     String ins1 = string_insert(ori, index, 'A');
     printf("ins1: %s", ins1.data);
     putchar(']');
@@ -246,7 +257,7 @@ void test_string_remove(void) {
 
     String ori = string_new("It's a social construct");
 
-    int index = string_char_index(ori, 'a');
+    int index = string_index_of(ori, 'a');
     String rm1 = string_remove(ori, index);
     printf("%s\n", rm1.data);
 }
@@ -276,11 +287,11 @@ int main(void) {
     // test_new();
     // test_string_copy();
     // test_string_concat();
-    // test_empty(s, foo);
-    // test_char_at(foo);
-    // test_char_index(foo);
-    // test_count(s, foo);
-    test_equal();
+    // test_empty();
+    // test_char_at();
+    // test_index_of();
+    // test_count();
+    // test_equal();
     // test_contains();
     // test_starts_with();
     // test_ends_with();

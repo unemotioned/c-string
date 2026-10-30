@@ -61,8 +61,8 @@ gcc -xc -std=c11 -Wall -Wextra -pedantic -O2 main.c -o main
 - [x] `string_ends_with(String, String) -> int`
   - Return true if the string ends with the given suffix.
 
-- [x] `string_char_index(String, char) -> int`
-  - Return the index of the first occurrence of the given character, or -1 if
+- [x] `string_index_of(String, char) -> int`
+  - Return the index of the first occurrence of the given character(s), or -1 if
     not found.
 
 - [x] `string_count(String, char) -> int`
@@ -95,20 +95,9 @@ gcc -xc -std=c11 -Wall -Wextra -pedantic -O2 main.c -o main
     String pointers.
   - Return true on success.
 
----
+- [ ] `string_region_match(String, String) -> int`
+  - compare regions in two different strings to check if they are equal.
 
-## TODOs
-
-Java String methods not implemented yet.
-
-- compareTo - compare using lexicographic
-- compareToIgnoreCase
-- indexOf
-- lastIndexOf
-- isBlank
-- replace
-- split
-- join
-- repeat
-- lines
-- regionMatches
+- [ ] `string_join(String, ...) -> String`
+  - Take multiple String structs as arguments and return single string joined
+    all together.
