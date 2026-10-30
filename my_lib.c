@@ -163,7 +163,7 @@ int string_contains(String a, String b) {
     }
 
     size_t i = 0;
-    for (size_t j = 0; j < a.length; j++) {
+    for (size_t j = 0; j < a.length - b.length + 1; j++) {
         for (size_t k = 0; k < b.length; k++) {
             if (a.data[j + k] == b.data[k]) {
                 i++;

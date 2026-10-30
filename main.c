@@ -156,12 +156,14 @@ void test_contains(void) {
     String c = string_new("bar");
     String d = string_new("Let me go home");
     String e = string_new("foobar");
+    String f = string_new("baz");
 
     printf("do ref contains a? %d\n", string_contains(ref, a));
     printf("do ref contains b? %d\n", string_contains(ref, b));
     printf("do ref contains c? %d\n", string_contains(ref, c));
     printf("do ref contains d? %d\n", string_contains(ref, d));
-    printf("do ref contains d? %d\n", string_contains(ref, e));
+    printf("do ref contains e? %d\n", string_contains(ref, e));
+    printf("do ref contains f? %d\n", string_contains(ref, f));
 }
 
 void test_starts_with(void) {
