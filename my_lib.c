@@ -29,20 +29,20 @@ size_t string_length(const char *text) {
 }
 
 String string_new(const char *text) {
-    String s;
+    String new = {0};
 
-    s.length = string_length(text);
-    s.capacity = s.length + 1;
+    new.length = string_length(text);
+    new.capacity = new.length + 1;
 
-    s.data = malloc(s.capacity);
-    if (s.data == NULL) {
+    new.data = malloc(new.capacity);
+    if (new.data == NULL) {
         printf("Failed to malloc String\n");
-        exit(1);
+        return new;
     }
 
-    memcpy(s.data, text, s.capacity);
+    memcpy(new.data, text, new.capacity);
 
-    return s;
+    return new;
 }
 
 void string_free(String *s) {
@@ -67,7 +67,8 @@ String string_concat(String a, String b) {
     char *new_p = malloc(a.length + b.length);
     if (new_p == NULL) {
         printf("Failed to malloc string_concat\n");
-        exit(1);
+        String empty = {0};
+        return empty;
     }
 
     for (size_t i = 0; i < a.length; i++) {
@@ -212,7 +213,7 @@ String string_trim(String s) {
     new_p = malloc(trimmed_size);
     if (new_p == NULL) {
         printf("Failed to malloc string_trim\n");
-        exit(1);
+        return s;
     }
 
     for (size_t i = front; i <= rear; i++) {
@@ -270,7 +271,7 @@ String string_insert(String s, int index, char c) {
     char *new_p = malloc(s.capacity + 1);
     if (new_p == NULL) {
         printf("Failed to malloc string_insert");
-        exit(1);
+        return s;
     }
 
     for (int i = 0; i < index; i++) {
@@ -297,7 +298,7 @@ String string_remove(String s, int index) {
     char *new_p = malloc(s.length);
     if (new_p == NULL) {
         printf("Failed to malloc string_remove");
-        exit(1);
+        return s;
     }
 
     for (int i = 0; i < index; i++) {
