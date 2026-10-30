@@ -99,8 +99,8 @@ gcc -xc -std=c11 -Wall -Wextra -pedantic -O2 main.c -o main
     String pointers.
   - Return true on success.
 
-- [ ] `string_region_match(String, int, String, int, int) -> size_t`
-  - compare regions in two different strings to check if they are equal.
+- [x] `string_region_match(String, int, String, int, int) -> int`
+  - Compare regions in two different strings to check if they are equal.
 
 - [x] `string_join(int) -> String`
   - Take number of Strings to join and varying number of String structs.

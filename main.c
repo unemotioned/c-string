@@ -297,6 +297,25 @@ void test_split(void) {
     }
 }
 
+void test_region_match(void) {
+    printf("\n===== Test Region Match =====\n");
+
+    // length = 23
+    String a = string_new("It's a social construct");
+    //                     01234567890123456789012
+
+    String b = string_new("socialism");
+    //                     012345678
+
+    String c = string_new("uct.");
+
+    int m1 = string_region_match(a, 7, b, 0, 6);
+    printf("m1: %d\n", m1);
+
+    int m2 = string_region_match(a, 20, c, 0, c.length);
+    printf("m2: %d\n", m2);
+}
+
 void test_join(void) {
     printf("\n===== Test Join =====\n");
 
@@ -320,7 +339,7 @@ int main(void) {
     // test_empty();
     // test_char_at();
     // test_index_of();
-    test_index_of_str();
+    // test_index_of_str();
     // test_count();
     // test_equal();
     // test_contains();
@@ -332,6 +351,7 @@ int main(void) {
     // test_insert();
     // test_remove();
     // test_split();
+    test_region_match();
     // test_join();
 
     return 0;

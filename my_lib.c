@@ -372,6 +372,22 @@ int string_split(const String s, const int index, String *front, String *rear) {
     return 1;
 }
 
+int string_region_match(String a, int offset, String b, int start, int stop) {
+    int len = stop - start;
+
+    if (len > a.length - offset) {
+        return 0;
+    }
+
+    for (size_t i = 0; i < len; i++) {
+        if (a.data[i + offset] != b.data[i + start]) {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
 String string_join(int count, ...) {
     String joined = {0};
     size_t prev_size = 0;
