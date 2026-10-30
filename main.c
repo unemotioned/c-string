@@ -73,7 +73,7 @@ void test_string_concat(void) {
     string_free(&foo);
 }
 
-void test_char_at() {
+void test_char_at(void) {
     String s = string_new("Foobar is German");
     //                     0123456789012345
 
@@ -87,7 +87,7 @@ void test_char_at() {
     printf("char at 16: %c\n", string_char_at(s, 16));
 }
 
-void test_index_of() {
+void test_index_of(void) {
     printf("\n===== Test Char Index =====\n");
 
     String foo = string_new("Foobar");
@@ -117,7 +117,7 @@ void test_index_of_str(void) {
     printf("i2: %zu\n", string_index_of_str(a, c)); // 10
 }
 
-void test_count() {
+void test_count(void) {
     printf("\n===== Test Count =====\n");
 
     String s1 = string_new("");
