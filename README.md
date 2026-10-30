@@ -39,10 +39,10 @@ gcc -xc -std=c11 -Wall -Wextra -pedantic -O2 main.c -o main
 - [x] `string_concat(String, String) -> String`
   - Combine two strings into a new string.
 
-- [x] `string_compare(String, String) -> int`
+- [x] `string_equal(String, String) -> int`
   - Return true if two strings contain the same characters.
 
-- [ ] `string_compare_ignore_case(String, String) -> int`
+- [ ] `string_equal_ignore_case(String, String) -> int`
   - Return true if two strings contain the same characters regardless of upper
     or lower case.
 

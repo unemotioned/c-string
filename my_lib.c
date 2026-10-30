@@ -120,7 +120,7 @@ size_t string_count(String s, const char c) {
     return cnt;
 }
 
-int string_compare(String a, String b) {
+int string_equal(String a, String b) {
     if (a.length != b.length) {
         return 0;
     }

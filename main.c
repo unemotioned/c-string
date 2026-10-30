@@ -106,21 +106,22 @@ void test_count(String s, String foo) {
     printf("nay: %d\n", (int)(size_t)nay);
 }
 
-void test_compare(String foo) {
-    printf("\n===== Test Compare =====\n");
+void test_equal(void) {
+    printf("\n===== Test Equal =====\n");
 
+    String foo = string_new("Foobar");
     String bar = string_new("Foobar");
     String baz = string_new("Hello, World");
     String f = string_new("foo");
 
+    // same
+    printf("cmp foo and bar: %d\n", string_equal(foo, bar));
+
     // length
-    printf("cmp foo and baz: %d\n", string_compare(foo, baz));
+    printf("cmp foo and baz: %d\n", string_equal(foo, baz));
 
     // different
-    printf("cmp foo and f: %d\n", string_compare(foo, f));
-
-    // same
-    printf("cmp foo and bar: %d\n", string_compare(foo, bar));
+    printf("cmp foo and f: %d\n", string_equal(foo, f));
 }
 
 void test_contains(void) {
@@ -272,9 +273,6 @@ void test_split(void) {
 }
 
 int main(void) {
-    String s = string_new("");
-    String foo = string_new("Foobar");
-
     // test_new();
     // test_string_copy();
     // test_string_concat();
@@ -282,7 +280,7 @@ int main(void) {
     // test_char_at(foo);
     // test_char_index(foo);
     // test_count(s, foo);
-    // test_compare(foo);
+    test_equal();
     // test_contains();
     // test_starts_with();
     // test_ends_with();
@@ -292,9 +290,6 @@ int main(void) {
     // test_string_insert();
     // test_string_remove();
     // test_split();
-
-    string_free(&foo);
-    string_free(&s);
 
     return 0;
 }
