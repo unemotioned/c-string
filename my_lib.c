@@ -241,7 +241,7 @@ String string_substring(String s, int start, int stop) {
     for (int i = start; i < stop; i++) {
         sub_p[i - start] = s.data[i];
     }
-    sub_p[stop] = '\0';
+    sub_p[size] = '\0';
 
     return string_new(sub_p);
 }
