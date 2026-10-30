@@ -142,7 +142,7 @@ size_t string_count(String s, const char c) {
     return cnt;
 }
 
-int string_equal(String a, String b) {
+int string_equals(String a, String b) {
     if (a.length != b.length) {
         return 0;
     }
@@ -150,6 +150,39 @@ int string_equal(String a, String b) {
     for (size_t i = 0; i < a.length; i++) {
         if (a.data[i] != b.data[i]) {
             return 0;
+        }
+    }
+
+    return 1;
+}
+
+static int is_ascii_alpha(char c) {
+    if (c >= 'A' && c <= 'Z') {
+        return 1;
+    } else if (c >= 'a' && c <= 'z') {
+        return 1;
+    }
+
+    return 0;
+}
+
+int string_equals_ignore_case(String a, String b) {
+    if (a.length != b.length) {
+        return 0;
+    }
+
+    for (size_t i = 0; i < a.length; i++) {
+        if (is_ascii_alpha(a.data[i])) {
+            if (a.data[i] > b.data[i] && a.data[i] - OFFSET != b.data[i]) {
+                return 0;
+            }
+            if (a.data[i] < b.data[i] && a.data[i] + OFFSET != b.data[i]) {
+                return 0;
+            }
+        } else {
+            if (a.data[i] != b.data[i]) {
+                return 0;
+            }
         }
     }
 

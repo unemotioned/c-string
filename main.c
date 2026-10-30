@@ -129,7 +129,7 @@ void test_count() {
     printf("'o' in s2: %zu\n", string_count(s2, 'o'));
 }
 
-void test_equal(void) {
+void test_equals(void) {
     printf("\n===== Test Equal =====\n");
 
     String foo = string_new("Foobar");
@@ -138,13 +138,31 @@ void test_equal(void) {
     String f = string_new("foo");
 
     // same
-    printf("cmp foo and bar: %d\n", string_equal(foo, bar));
+    printf("cmp foo and bar: %d\n", string_equals(foo, bar));
 
     // length
-    printf("cmp foo and baz: %d\n", string_equal(foo, baz));
+    printf("cmp foo and baz: %d\n", string_equals(foo, baz));
 
     // different
-    printf("cmp foo and f: %d\n", string_equal(foo, f));
+    printf("cmp foo and f: %d\n", string_equals(foo, f));
+}
+
+void test_equals_ignore_case(void) {
+    printf("\n===== Test Equal Ignore Case =====\n");
+
+    String s1 = string_new("FooBar1234");
+    String s2 = string_new("foobar1234");
+    String s3 = string_new("help me");
+    String s4 = string_new("HELP ME");
+
+    printf("res1: %d\n", string_equals_ignore_case(s1, s2)); // 1
+    printf("res1: %d\n", string_equals_ignore_case(s1, s3)); // 0
+    printf("res1: %d\n", string_equals_ignore_case(s3, s4)); // 1
+
+    string_free(&s4);
+    string_free(&s3);
+    string_free(&s2);
+    string_free(&s1);
 }
 
 void test_contains(void) {
@@ -362,14 +380,15 @@ int main(void) {
     // test_index_of();
     // test_index_of_str();
     // test_count();
-    // test_equal();
+    // test_equals();
+    test_equals_ignore_case();
     // test_contains();
     // test_starts_with();
     // test_ends_with();
     // test_substring();
     // test_to_upper();
     // test_to_lower();
-    test_toggle_case();
+    // test_toggle_case();
     // test_trim();
     // test_replace();
     // test_insert();
