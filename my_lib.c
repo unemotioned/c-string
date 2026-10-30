@@ -111,6 +111,25 @@ size_t string_index_of(String s, const char c) {
     return index;
 }
 
+size_t string_index_of_str(String a, String b) {
+    if (a.length < b.length) {
+        return SIZE_MAX;
+    }
+
+    for (size_t j = 0; j < a.length - b.length + 1; j++) {
+        for (size_t k = 0; k < b.length; k++) {
+            if (a.data[j + k] != b.data[k]) {
+                break;
+            }
+            if (k == b.length - 1) {
+                return j;
+            }
+        }
+    }
+
+    return SIZE_MAX;
+}
+
 size_t string_count(String s, const char c) {
     size_t cnt = 0;
     for (size_t i = 0; i < s.length; i++) {

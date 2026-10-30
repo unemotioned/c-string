@@ -107,6 +107,18 @@ void test_index_of() {
     printf("idx of b: %zu\n", lower_b);
 }
 
+void test_index_of_str(void) {
+    printf("\n===== Test Index Of Str =====\n");
+
+    String a = string_new("Geeks for geeks");
+    //                     012345678901234
+    String b = string_new("for");
+    String c = string_new("geeks");
+
+    printf("i1: %zu\n", string_index_of_str(a, b)); // 6
+    printf("i2: %zu\n", string_index_of_str(a, c)); // 10
+}
+
 void test_count() {
     printf("\n===== Test Count =====\n");
 
@@ -306,6 +318,7 @@ int main(void) {
     // test_empty();
     // test_char_at();
     // test_index_of();
+    test_index_of_str();
     // test_count();
     // test_equal();
     // test_contains();
@@ -317,7 +330,7 @@ int main(void) {
     // test_insert();
     // test_remove();
     // test_split();
-    test_join();
+    // test_join();
 
     return 0;
 }
