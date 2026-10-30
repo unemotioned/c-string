@@ -11,7 +11,14 @@ typedef struct {
     size_t capacity; // including terminator
 } String;
 
+/**
+ * Return early if `.data` is `NULL`.
+ */
 void string_print(const String s) {
+    if (s.data == NULL) {
+        return;
+    }
+
     char c = ' ';
     size_t index = 0;
     while (c = s.data[index], c != '\0') {
@@ -499,7 +506,7 @@ int string_split(const String s, const int index, String *front, String *rear) {
 }
 
 int string_region_match(String a, int offset, String b, int start, int stop) {
-    int len = stop - start;
+    size_t len = (size_t)(stop - start);
 
     if (len > a.length - offset) {
         return 0;
@@ -536,7 +543,7 @@ String string_join(int count, ...) {
         joined_p = new_p;
 
         joined_p[prev_size + s.length] = '\0';
-        for (int j = 0; j < s.length; j++) {
+        for (size_t j = 0; j < s.length; j++) {
             joined_p[prev_size + j] = s.data[j];
         }
 
