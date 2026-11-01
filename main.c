@@ -387,30 +387,30 @@ void test_join(void) {
 }
 
 int main(void) {
-    // test_new();
-    // test_string_copy();
-    // test_string_concat();
+    test_new();
+    test_string_copy();
+    test_string_concat();
     test_blank();
-    // test_char_at();
-    // test_index_of();
-    // test_index_of_str();
-    // test_count();
-    // test_equals();
-    // test_equals_ignore_case();
-    // test_contains();
-    // test_starts_with();
-    // test_ends_with();
-    // test_substring();
-    // test_to_upper();
-    // test_to_lower();
-    // test_toggle_case();
-    // test_trim();
-    // test_replace();
-    // test_insert();
-    // test_remove();
-    // test_split();
-    // test_region_match();
-    // test_join();
+    test_char_at();
+    test_index_of();
+    test_index_of_str();
+    test_count();
+    test_equals();
+    test_equals_ignore_case();
+    test_contains();
+    test_starts_with();
+    test_ends_with();
+    test_substring();
+    test_to_upper();
+    test_to_lower();
+    test_toggle_case();
+    test_trim();
+    test_replace();
+    test_insert();
+    test_remove();
+    test_split();
+    test_region_match();
+    test_join();
 
     return 0;
 }

@@ -1,11 +1,12 @@
 {
   "watch": [
     "main.c",
-    "my_lib.c"
+    "my_string.c",
+    "my_string.h"
   ],
-  "ext": "c",
+  "ext": "c,h",
   "ignore": [],
-  "exec": "gcc -xc -std=c11 -Wall -Wextra -pedantic -O2 main.c -o main && ./main",
+  "exec": "gcc -xc -std=c23 -Wall -Wextra -pedantic -O2 main.c my_string.c -o main && ./main",
   "events": {
     "start": "clear"
   }

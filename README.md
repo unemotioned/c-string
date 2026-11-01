@@ -15,7 +15,7 @@ Implementing String in C.
 ## Compile and Run
 
 ```sh
-gcc -xc -std=c23 -Wall -Wextra -pedantic -O2 main.c -o main
+gcc -xc -std=c23 -Wall -Wextra -pedantic -O2 main.c my_string.c -o main
 ./main
 ```
 
