@@ -1,4 +1,8 @@
+#pragma once
+
 #include <stdarg.h>
+#include <stddef.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -492,7 +496,6 @@ int string_split(const String s, const int index, String *front, String *rear) {
         return 0;
     }
 
-    // TODO: try refactoring `front->data` to pointer-pointer
     const short term = 1;
     front->data = malloc(index + term);
     if (front->data == NULL) {

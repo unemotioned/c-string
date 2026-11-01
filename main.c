@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "./my_lib.c"
+#include "./my_string.h"
 
 void test_new(void) {
     printf("\n===== Test New =====\n");
