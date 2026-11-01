@@ -14,9 +14,23 @@ Implementing String in C.
 
 ## Compile and Run
 
+### GCC
+
 ```sh
 gcc -xc -std=c23 -Wall -Wextra -pedantic -O2 main.c my_string.c -o main
 ./main
+```
+
+If you're on **macOS** you can use `clang` instead of `gcc` with same flags.
+
+### Makefile
+
+```sh
+make        # build if there is change
+
+make run    # build and run
+
+make clean  # remove build directory
 ```
 
 ---
