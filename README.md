@@ -17,7 +17,7 @@ Implementing String in C.
 ### GCC
 
 ```sh
-gcc -xc -std=c23 -Wall -Wextra -pedantic -O2 main.c my_string.c -o main
+gcc -std=c23 -Wall -Wextra -pedantic -O2 main.c my_string.c -o main
 ./main
 ```
 

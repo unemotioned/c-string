@@ -6,7 +6,7 @@
   ],
   "ext": "c,h",
   "ignore": [],
-  "exec": "gcc -xc -std=c23 -Wall -Wextra -pedantic -O2 main.c my_string.c -o main && ./main",
+  "exec": "gcc -std=c23 -Wall -Wextra -pedantic -O2 main.c my_string.c -o main && ./main",
   "events": {
     "start": "clear"
   }
