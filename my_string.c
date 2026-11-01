@@ -37,15 +37,14 @@ String string_new(const char *text) {
     String new = {0};
 
     new.length = string_length(text);
-    new.capacity = new.length + 1;
 
-    new.data = malloc(new.capacity);
+    new.data = malloc(new.length + 1);
     if (new.data == NULL) {
         printf("Failed to malloc String\n");
         return new;
     }
 
-    memcpy(new.data, text, new.capacity);
+    memcpy(new.data, text, new.length + 1);
 
     return new;
 }
@@ -251,7 +250,7 @@ int string_ends_with(String s, String suffix) {
 }
 
 String string_to_upper(String s) {
-    char *p = malloc(s.capacity);
+    char *p = malloc(s.length + 1);
     if (p == NULL) {
         printf("Failed to malloc string_to_upper\n");
         return (String){0};
@@ -269,7 +268,6 @@ String string_to_upper(String s) {
     String upper = {
         .data = p,
         .length = s.length,
-        .capacity = s.capacity,
     };
     p = NULL; // to avoid dangling pointer
 
@@ -277,7 +275,7 @@ String string_to_upper(String s) {
 }
 
 String string_to_lower(String s) {
-    char *p = malloc(s.capacity);
+    char *p = malloc(s.length + 1);
     if (p == NULL) {
         printf("Failed to malloc string_to_lower\n");
         return (String){0};
@@ -295,7 +293,6 @@ String string_to_lower(String s) {
     String lower = {
         .data = p,
         .length = s.length,
-        .capacity = s.capacity,
     };
     p = NULL;
 
@@ -303,7 +300,7 @@ String string_to_lower(String s) {
 }
 
 String string_toggle_case(String s) {
-    char *p = malloc(s.capacity);
+    char *p = malloc(s.length + 1);
     if (p == NULL) {
         printf("Failed to malloc string_toggle_case\n");
         return (String){0};
@@ -323,7 +320,6 @@ String string_toggle_case(String s) {
     String toggle = {
         .data = p,
         .length = s.length,
-        .capacity = s.capacity,
     };
     p = NULL;
 
@@ -405,7 +401,7 @@ String string_insert(String s, int index, char c) {
         return (String){0};
     }
 
-    char *ins_p = malloc(s.capacity + 1);
+    char *ins_p = malloc(s.length + 2);
     if (ins_p == NULL) {
         printf("Failed to malloc string_insert");
         return (String){0};
@@ -418,7 +414,7 @@ String string_insert(String s, int index, char c) {
     for (size_t i = (size_t)index; i < s.length; i++) {
         ins_p[i + 1] = s.data[i];
     }
-    ins_p[s.capacity] = '\0';
+    ins_p[s.length + 1] = '\0';
 
     String ins = string_new(ins_p);
     free(ins_p);
@@ -470,7 +466,6 @@ int string_split(const String s, const int index, String *front, String *rear) {
     }
     front->data[index] = '\0';
     front->length = string_length(front->data);
-    front->capacity = front->length + 1;
 
     const short term_and_index = 2;
     rear->data = malloc(s.length - index + term_and_index);
@@ -483,7 +478,6 @@ int string_split(const String s, const int index, String *front, String *rear) {
         rear->data[i - index] = s.data[i];
     }
     rear->length = string_length(rear->data);
-    rear->capacity = rear->length + 1;
 
     return 1;
 }

@@ -5,7 +5,6 @@
 typedef struct {
     char *data;
     size_t length;
-    size_t capacity; // including terminator
 } String;
 
 /**
