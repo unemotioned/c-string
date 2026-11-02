@@ -1,5 +1,13 @@
 ---
 BasedOnStyle: LLVM
 IndentWidth: 4
-UseTab: Never
-AllowShortFunctionsOnASingleLine: InlineOnly
+ColumnLimit: 100
+
+AllowShortFunctionsOnASingleLine: None
+
+BreakAfterAttributes: Always
+
+PackArguments:
+  BinPack: OnePerLine
+PackParameters:
+  BinPack: OnePerLine
