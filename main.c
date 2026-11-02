@@ -50,7 +50,7 @@ void test_empty(void) {
 void test_blank(void) {
     printf("\n===== Test Blank =====\n");
 
-    String s1 = string_new("Consciouis String");
+    String s1 = string_new("Conscious String");
     printf("Is s1 blank?: %s\n", string_is_blank(s1) ? "True" : "False");
 
     String s2 = string_new("   ");
