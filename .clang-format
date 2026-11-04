@@ -1,13 +1,24 @@
 ---
 BasedOnStyle: LLVM
+UseTab: Never
 IndentWidth: 4
-ColumnLimit: 100
+ColumnLimit: 80
+
+# args and params one per line when exceeds col limit
+AllowAllArgumentsOnNextLine: false
+PackArguments:
+  BinPack: OnePerLine
+AllowAllParametersOfDeclarationOnNextLine: false
+PackParameters:
+  BinPack: OnePerLine
 
 AllowShortFunctionsOnASingleLine: None
 
 BreakAfterAttributes: Always
+BreakBeforeBraces: Attach # opening braces always on same line
 
-PackArguments:
-  BinPack: OnePerLine
-PackParameters:
-  BinPack: OnePerLine
+# discourage break after return type
+BreakAfterReturnType: Automatic
+PenaltyReturnTypeOnItsOwnLine: 1048576 # 1024 ^ 2
+
+PointerAlignment: Right
